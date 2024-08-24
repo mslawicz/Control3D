@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ux_api.h": "c",
+        "main.h": "c"
+    }
+}
