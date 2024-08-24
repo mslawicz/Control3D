@@ -115,9 +115,14 @@ void heartBeatThreadEntry(ULONG thread_input)
   /* Infinite loop */
   while (1)
   {
-    /* Toggle LED to indicate status*/
-    HAL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
-    tx_thread_sleep(50);
+    HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET);
+    tx_thread_sleep(UX_MS_TO_TICK_NON_ZERO(50));
+    HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET);
+    tx_thread_sleep(UX_MS_TO_TICK_NON_ZERO(100));
+    HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET);
+    tx_thread_sleep(UX_MS_TO_TICK_NON_ZERO(50));
+    HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET);
+    tx_thread_sleep(UX_MS_TO_TICK_NON_ZERO(800));            
   }
 }
 /* USER CODE END 1 */
